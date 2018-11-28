@@ -12,11 +12,11 @@
 // }
 
 export const reset = () => {
-    const word = 'TEST'
+    const word = 'TESTER'
     return (dispatch) => {
       dispatch({
         type: RESET,
-        word
+        word: word.toLowerCase()
       })
     }
   }

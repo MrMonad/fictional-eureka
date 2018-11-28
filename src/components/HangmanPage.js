@@ -23,7 +23,12 @@ export class HangmanPage extends React.Component {
           word={this.props.hangman.get('word')}
           correctGuesses={this.props.hangman.get('correctGuesses')}
         />
-        <Keyboard />
+        <Keyboard 
+          correctGuesses={this.props.hangman.get('correctGuesses')}
+          wrongGuesses={this.props.hangman.get('wrongGuesses')}
+          guess={ this.props.actions.guess}
+          word={this.props.hangman.get('word')}
+        />
         <br />
         {this.props.hangman.get('word')}
       </div>
