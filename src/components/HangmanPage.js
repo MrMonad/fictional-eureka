@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/hangmanActions';
 import Hangman from './Hangman';
 import Word from './Word';
+import Keyboard from './Keyboard';
 
 export class HangmanPage extends React.Component {
 
@@ -22,6 +23,8 @@ export class HangmanPage extends React.Component {
           word={this.props.hangman.get('word')}
           correctGuesses={this.props.hangman.get('correctGuesses')}
         />
+        <Keyboard />
+        <br />
         {this.props.hangman.get('word')}
       </div>
     );

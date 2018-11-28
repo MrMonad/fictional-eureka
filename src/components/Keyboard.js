@@ -1,16 +1,14 @@
 import React from 'react';
+import { Set } from 'immutable';
 
-const Keyboard = ({correctGuesses, wrongGuesses}) => {
-    const letters = [
+const Keyboard = ({correctGuesses = Set(), wrongGuesses = Set()}) => {
+    const rows = [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
         ['z', 'x', 'c', 'v', 'b', 'n', 'm']
       ];
 
-    const Key = ({char, mode}) => {
-    }
-
-    const KeyboardLetter = (char) => {
+    const KeyboardLetter = ({char}) => {
         if(correctGuesses.has(char)) {
             return (<div className='keyboard-key'>$</div>)
         } else if (wrongGuesses.has(char)) {
@@ -20,16 +18,16 @@ const Keyboard = ({correctGuesses, wrongGuesses}) => {
         }
     }
 
-    const KeyboardRow = (letters) => (
+    const KeyboardRow = ({letters}) => (
         <div className='keyboard-row' >
-            letters.map((char) => <KeyboardLetter char={char} />)
+            {letters.map((char) => <KeyboardLetter char={char} />)}
         </div>
     )
 
 
     return (
         <div>
-            {letters.map((row) => <KeyboardRow letters={row} />)}
+            {rows.map((row) => <KeyboardRow letters={row} />)}
         </div>
     )
 }

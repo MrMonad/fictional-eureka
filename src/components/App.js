@@ -16,7 +16,7 @@ class App extends React.Component {
   render() {
     const activeStyle = { color: 'blue' };
     return (
-      <div>
+      <div className='hangman-app' >
         <div>
           <NavLink exact to="/" activeStyle={activeStyle}>Hangman</NavLink>
           {' | '}
