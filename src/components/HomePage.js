@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/hangmanActions';
 import Hangman from './Hangman';
+import Word from './Word';
 
 export class HangmanPage extends React.Component {
 
@@ -14,7 +15,13 @@ export class HangmanPage extends React.Component {
   render() {
     return (
       <div>
-        <Hangman lives={this.props.hangman.get('lives')} />
+        <Hangman 
+          lives={this.props.hangman.get('lives')}
+        />
+        <Word
+          word={this.props.hangman.get('word')}
+          correctGuesses={this.props.hangman.get('correctGuesses')}
+        />
         {this.props.hangman.get('word')}
       </div>
     );
@@ -27,7 +34,6 @@ HangmanPage.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     hangman: state.hangman
   };
