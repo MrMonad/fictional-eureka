@@ -44,7 +44,16 @@ body {
 h2 {
   color: $vin-blue;
   text-align: center;
+
+  &.win {
+    color: $vin-green
+  }
+  &.lose {
+    color: $vin-red
+  }
 }
+
+
 
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }
