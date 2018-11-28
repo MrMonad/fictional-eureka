@@ -10,6 +10,25 @@
 //     });
 //   };
 // }
+import axios from 'axios';
+
+
+const API_URL = 'http://localhost:4000/' 
+
+export const init = () => {
+    return (dispatch) => {
+      return axios.get(API_URL, { headers: { 'crossDomain': true, 'Content-Type': 'application/json'}})
+        .then((response) => {
+            console.log(response)
+            dispatch({
+                type: RESET
+                // word: word.toLowerCase()
+            })
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+}
 
 export const reset = () => {
     const word = 'TESTER'
@@ -21,7 +40,7 @@ export const reset = () => {
     }
   }
   
-  export const guess = (word, letter) => {
+export const guess = (word, letter) => {
     if(word.indexOf(letter) > -1) {
       return {
         type: CORRECT_GUESS,
@@ -35,8 +54,8 @@ export const reset = () => {
     }
   }
   
-  
-  export const RESET = 'RESET'
-  export const CORRECT_GUESS = 'CORRECT_GUESS'
-  export const WRONG_GUESS = 'WRONG_GUESS'
+export const INIT = 'INIT'
+export const RESET = 'RESET'
+export const CORRECT_GUESS = 'CORRECT_GUESS'
+export const WRONG_GUESS = 'WRONG_GUESS'
   

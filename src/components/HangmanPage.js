@@ -10,7 +10,7 @@ import Keyboard from './Keyboard';
 export class HangmanPage extends React.Component {
 
   componentDidMount() {
-    this.props.actions.reset()
+    this.props.actions.init()
   }
 
   render() {
@@ -20,10 +20,10 @@ export class HangmanPage extends React.Component {
     const wrongGuesses = this.props.hangman.get('wrongGuesses')
 
     const hasLost = lives < 1
-    const hasWon = word
+    const hasWon = word ? word
       .split('')
       .map((char) => correctGuesses.has(char))
-      .reduce(( acc, curr) => acc && curr, true)
+      .reduce(( acc, curr) => acc && curr, true) : false
 
     return (
       <div>

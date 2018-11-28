@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Words = ({correctGuesses, word}) => {
+  if(!word) return null
   let letters = word.split('').map((char) => {
     if(correctGuesses.has(char)) {
       return char

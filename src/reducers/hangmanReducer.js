@@ -1,4 +1,4 @@
-import { RESET, CORRECT_GUESS, WRONG_GUESS} from '../actions/hangmanActions'
+import { INIT, RESET, CORRECT_GUESS, WRONG_GUESS} from '../actions/hangmanActions'
 import { fromJS, Set } from 'immutable'
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
@@ -11,15 +11,20 @@ const initialState = fromJS({
     word: '',
     correctGuesses: Set(),
     wrongGuesses: Set(),
-    lives: 6
+    lives: 6,
+    wordBank: []
 })
 
 const hangmanReducer = (state = initialState, action) => {
     switch (action.type) {
+        case INIT:
+            
         case RESET:
-            console.log('reset')
-            return initialState.merge({
-                word: action.word
+            return state.merge({
+                word: action.word,
+                correctGuesses: Set(),
+                wrongGuesses: Set(),
+                lives: 6
             })
         case CORRECT_GUESS:
             const correctGuesses = state.get('correctGuesses').add(action.letter)
