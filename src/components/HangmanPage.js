@@ -14,23 +14,37 @@ export class HangmanPage extends React.Component {
   }
 
   render() {
+    const lives = this.props.hangman.get('lives')
+    const word = this.props.hangman.get('word')
+    const correctGuesses = this.props.hangman.get('correctGuesses')
+    const wrongGuesses = this.props.hangman.get('wrongGuesses')
+
+    const hasLost = lives < 1
+    const hasWon = word
+      .split('')
+      .map((char) => correctGuesses.has(char))
+      .reduce(( acc, curr) => acc && curr, true)
+
     return (
       <div>
-        <Hangman 
-          lives={this.props.hangman.get('lives')}
+        <Hangman
+          hasWon={hasWon}
+          hasLost={hasLost}
+          lives={lives}
         />
         <Word
-          word={this.props.hangman.get('word')}
-          correctGuesses={this.props.hangman.get('correctGuesses')}
+          word={word}
+          correctGuesses={correctGuesses}
         />
         <Keyboard 
-          correctGuesses={this.props.hangman.get('correctGuesses')}
-          wrongGuesses={this.props.hangman.get('wrongGuesses')}
-          guess={ this.props.actions.guess}
-          word={this.props.hangman.get('word')}
+          correctGuesses={correctGuesses}
+          wrongGuesses={wrongGuesses}
+          guess={this.props.actions.guess}
+          word={word}
+          disable={hasWon || hasLost}
         />
         <br />
-        {this.props.hangman.get('word')}
+        {word}
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Set } from 'immutable';
 
-const Keyboard = ({word, guess, correctGuesses = Set(), wrongGuesses = Set()}) => {
+const Keyboard = ({disable, word, guess, correctGuesses = Set(), wrongGuesses = Set()}) => {
     const rows = [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
@@ -19,7 +19,7 @@ const Keyboard = ({word, guess, correctGuesses = Set(), wrongGuesses = Set()}) =
                     className='keyboard-key'
                     onClick={() => {
                         console.log(`click ${char}`)
-                        guess(word, char)
+                        if(!disable) guess(word, char)
                     }}
                 >
                     {char}
