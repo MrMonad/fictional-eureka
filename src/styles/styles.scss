@@ -40,6 +40,10 @@ body {
   margin: auto;
 }
 
+span {
+  color: white;
+}
+
 
 h2 {
   color: $vin-blue;
@@ -53,6 +57,12 @@ h2 {
   }
 }
 
+.title {
+  font-size: 3em;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: $vin-blue;
+  color: white;
+}
 
 
 .savings { color: $vin-green; }

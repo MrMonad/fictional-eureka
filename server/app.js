@@ -7,7 +7,7 @@ app.use(cors())
 const port = 4000
 
 app.get('/', (req, res) => {
-    axios.get('http://app.linkedin-reach.io/words?count=50')
+    axios.get('http://app.linkedin-reach.io/words?&minLength=5&maxLength=10')
         .then((response) => {
             return res.send(response.data.split('\n'))
         })

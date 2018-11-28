@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/hangmanActions';
 import Hangman from './Hangman';
-import Word from './Word';
+import Word from './HiddenWord';
 import Keyboard from './Keyboard';
 
 export class HangmanPage extends React.Component {
@@ -27,6 +27,7 @@ export class HangmanPage extends React.Component {
 
     return (
       <div>
+        <h2 className="title"> HANGMAN </h2>
         <Hangman
           hasWon={hasWon}
           hasLost={hasLost}
@@ -41,11 +42,11 @@ export class HangmanPage extends React.Component {
           wrongGuesses={wrongGuesses}
           guess={this.props.actions.guess}
           word={word}
-          disable={hasWon || hasLost}
+          disable={hasWon || hasLost || !word}
         />
         <button onClick={this.props.actions.reset}>Reset</button>
         <br />
-        {word}
+        {<span>{word}</span>}
       </div>
     );
   }

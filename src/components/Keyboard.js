@@ -8,7 +8,7 @@ const Keyboard = ({disable, word, guess, correctGuesses = Set(), wrongGuesses = 
         ['z', 'x', 'c', 'v', 'b', 'n', 'm']
       ];
 
-    const KeyboardLetter = ({char}) => {
+    const KeyboardLetter = ({char, disable}) => {
         if(correctGuesses.has(char)) {
             return (<div className='keyboard-key correct'>-</div>)
         } else if (wrongGuesses.has(char)) {
@@ -27,16 +27,16 @@ const Keyboard = ({disable, word, guess, correctGuesses = Set(), wrongGuesses = 
         }
     }
 
-    const KeyboardRow = ({letters}) => (
+    const KeyboardRow = ({letters, disable}) => (
         <div className='keyboard-row' >
-            {letters.map((char) => <KeyboardLetter char={char} />)}
+            {letters.map((char) => <KeyboardLetter char={char} disable={disable} />)}
         </div>
     )
 
 
     return (
         <div>
-            {rows.map((row) => <KeyboardRow letters={row} />)}
+            {rows.map((row) => <KeyboardRow letters={row} disable={disable} />)}
         </div>
     )
 }
