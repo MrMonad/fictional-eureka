@@ -17,7 +17,10 @@ const initialState = fromJS({
 const hangmanReducer = (state = initialState, action) => {
     switch (action.type) {
         case RESET:
-            return initialState
+            console.log('reset')
+            return initialState.merge({
+                word: action.word
+            })
         case CORRECT_GUESS:
             const correctGuesses = state.get('correctGuesses').push(action.letter)
             return state.merge({

@@ -30,6 +30,7 @@ export const reset = () => {
     } else {
       return {
         type: WRONG_GUESS,
+        letter: letter
       }
     }
   }

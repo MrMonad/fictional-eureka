@@ -3,6 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'; 
 
+installDevTools(immutable);
+
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
