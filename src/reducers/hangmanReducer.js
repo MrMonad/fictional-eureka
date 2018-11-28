@@ -18,10 +18,15 @@ const initialState = fromJS({
 const hangmanReducer = (state = initialState, action) => {
     switch (action.type) {
         case INIT:
-            
-        case RESET:
-            return state.merge({
+            return initialState.merge({
                 word: action.word,
+                wordBank: action.wordBank
+            })
+        case RESET:
+            const wordBank = state.get('wordBank')
+            const word = wordBank[Math.floor(Math.random()*wordBank.length)];
+            return state.merge({
+                word: word,
                 correctGuesses: Set(),
                 wrongGuesses: Set(),
                 lives: 6

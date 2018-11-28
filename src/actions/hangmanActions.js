@@ -19,10 +19,14 @@ export const init = () => {
     return (dispatch) => {
       return axios.get(API_URL, { headers: { 'crossDomain': true, 'Content-Type': 'application/json'}})
         .then((response) => {
+            const wordBank = response.data
+            const word = wordBank[Math.floor(Math.random()*wordBank.length)];
+            console.log(word)
             console.log(response)
             dispatch({
-                type: RESET
-                // word: word.toLowerCase()
+                type: INIT,
+                word: word.toLowerCase(),
+                wordBank: wordBank
             })
         }).catch((err) => {
             console.log(err)
@@ -31,14 +35,10 @@ export const init = () => {
 }
 
 export const reset = () => {
-    const word = 'TESTER'
-    return (dispatch) => {
-      dispatch({
-        type: RESET,
-        word: word.toLowerCase()
-      })
-    }
-  }
+    return {
+        type: RESET
+      }
+}
   
 export const guess = (word, letter) => {
     if(word.indexOf(letter) > -1) {

@@ -43,6 +43,7 @@ export class HangmanPage extends React.Component {
           word={word}
           disable={hasWon || hasLost}
         />
+        <button onClick={this.props.actions.reset}>Reset</button>
         <br />
         {word}
       </div>
